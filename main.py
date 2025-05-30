@@ -1,54 +1,39 @@
 import streamlit as st
-import importlib.util
 import os
 
-# Configure the main page
-st.set_page_config(
-    page_title="ENG220 Unified Dashboard",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+st.set_page_config(page_title="ENG220 Dashboard Book", layout="wide")
 
-# Function to find .py file inside a directory
-def find_python_file(directory):
-    for file in os.listdir(directory):
-        if file.endswith(".py"):
-            return os.path.join(directory, file)
-    return None
+st.title("📘 ENG220 Unified Project Launcher")
 
-# Get list of project folders matching pattern
-base_dir = os.getcwd()  # or set explicitly if needed
 project_dirs = sorted([
-    d for d in os.listdir(base_dir)
-    if os.path.isdir(d) and d.startswith("ENG220-Group-")
+    f for f in os.listdir(".")
+    if f.startswith("ENG220-Group-") and os.path.isdir(f)
 ])
 
-# Sidebar navigation
-selected_page = st.sidebar.selectbox("Select a Project", ["Main Page"] + project_dirs)
+project_entry_files = {}
 
-# Main landing page
-def main_page():
-    st.title("📘 ENG220 Unified Dashboard Book")
-    st.markdown("""
-    This is a collection of 21 Streamlit data visualization projects, each in its own directory.
-    
-    **Instructions:**
-    - Select any project from the sidebar.
-    - Each group developed its own dashboard with a unique `.py` file.
-    """)
+# Detect the entry script in each directory
+for dir_name in project_dirs:
+    files = os.listdir(dir_name)
+    for entry_file in ["Home.py", "main.py"]:
+        if entry_file in files:
+            project_entry_files[dir_name] = os.path.join(dir_name, entry_file)
+            break
 
-# Function to dynamically load and run selected script
-def run_selected_project(project_dir):
-    script_path = find_python_file(project_dir)
-    if script_path:
-        spec = importlib.util.spec_from_file_location("dynamic_module", script_path)
-        module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(module)
-    else:
-        st.error(f"No Python file found in {project_dir}")
+# Sidebar to select a project
+selected_project = st.selectbox("Select a Project", list(project_entry_files.keys()))
 
-# Routing
-if selected_page == "Main Page":
-    main_page()
-else:
-    run_selected_project(selected_page)
+# Show contents of selected project
+st.subheader(f"📂 Files in `{selected_project}`:")
+st.code("\n".join(os.listdir(selected_project)))
+
+# Show launch instructions
+entry_script = project_entry_files[selected_project]
+launch_command = f"streamlit run {entry_script}"
+
+st.markdown("---")
+st.success("🟢 Entry script detected:")
+st.code(entry_script)
+
+st.markdown("### 🚀 To launch the project, run this in your terminal:")
+st.code(launch_command)
