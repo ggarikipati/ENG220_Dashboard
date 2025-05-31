@@ -4,7 +4,18 @@ import matplotlib.pyplot as plt
 import os
 
 # Title of the app
-st.title("Water Data in New Mexico Districts")
+st.title("Group-004")
+
+st.markdown("""
+### Water Data in New Mexico Districts
+
+This project explores environmental and climatic data across various **districts in New Mexico**, using datasets from both local and regional sources.  
+The goal is to understand the environmental challenges and trends affecting different areas, with a focus on **state and local government policies** related to water conservation.  
+
+We examine the **effectiveness of conservation strategies**, public awareness initiatives, and **technological innovations** in water management.  
+Through this analysis, we aim to identify best practices and offer recommendations to strengthen water conservation and promote **sustainable environmental management**.
+""")
+
 
 st.image("WaterDistricts.png", caption="Water Districts in New Mexico")
 
