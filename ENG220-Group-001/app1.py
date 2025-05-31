@@ -6,7 +6,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Title of the app
-st.title("Water Supply Data Visualization App")
+st.title("Group-001")
+
+st.markdown("""
+### Water Supply Data Visualization App
+
+This dashboard explores the relationship between water supply, water return, and weather patterns in **Albuquerque and Bernalillo County**.  
+We compare municipal water data with average weather conditions to uncover potential correlations.  
+The data used in this project was sourced from **USGS**, **ABCWUA**, and the **National Weather Service (NWS)**.
+""")
+
 
 debug = 1
 
