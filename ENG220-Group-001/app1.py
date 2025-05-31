@@ -22,7 +22,7 @@ debug = 1
 #if uploaded_file is not None:
 if debug == 1:
     # Read the CSV file
-    data = pd.read_csv('nm_water_weather_data.csv')
+    data = pd.read_csv('./ENG220-Group-001/nm_water_weather_data.csv')
 
     st.markdown('<p style="color:blue; font-size:30px;">Data Preview</p>', unsafe_allow_html=True)
 
