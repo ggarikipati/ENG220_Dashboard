@@ -26,7 +26,7 @@ if debug == 1:
         csv_path = os.path.join(current_dir, 'nm_water_weather_data.csv')
         data = pd.read_csv(csv_path)
 
-        st.markdown('<p style="color:blue; font-size:30px;">Data Preview</p>', unsafe_allow_html=True)
+        st.subheader("Data Preview")
         st.dataframe(data)
 
         # Dropdowns for selecting columns
