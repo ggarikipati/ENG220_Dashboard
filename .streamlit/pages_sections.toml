@@ -85,3 +85,99 @@ is_section = true
 path = "ENG220-Group-008/app8.py"
 name = "Group 008"
 icon = ":page_facing_up:"
+
+#[[pages]]
+#name = "Group 009"
+#icon = ":bookmark_tabs:"
+#is_section = true
+
+#[[pages]]
+#path = "ENG220-Group-009/app9.py"
+#name = "Group 009"
+#icon = ":page_facing_up:"
+
+[[pages]]
+name = "Group 010"
+icon = ":bookmark_tabs:"
+is_section = true
+
+[[pages]]
+path = "ENG220-Group-010/app10.py"
+name = "Group 010"
+icon = ":page_facing_up:"
+
+[[pages]]
+name = "Group 011"
+icon = ":bookmark_tabs:"
+is_section = true
+
+[[pages]]
+path = "ENG220-Group-011/app11.py"
+name = "Group 011"
+icon = ":page_facing_up:"
+
+[[pages]]
+name = "Group 012"
+icon = ":bookmark_tabs:"
+is_section = true
+
+[[pages]]
+path = "ENG220-Group-012/app12.py"
+name = "Group 012"
+icon = ":page_facing_up:"
+
+#[[pages]]
+#name = "Group 013"
+#icon = ":bookmark_tabs:"
+#is_section = true
+
+#[[pages]]
+#path = "ENG220-Group-013/app13.py"
+#name = "Main Page"
+#icon = ":bookmark:"
+
+#[[pages]]
+#path = "ENG220-Group-013/pages/page1.py"
+#name = "Page 1"
+#icon = ":page_with_curl:"
+
+#[[pages]]
+#path = "ENG220-Group-013/pages/page2.py"
+#name = "Page 2"
+#icon = ":page_with_curl:"
+
+[[pages]]
+name = "Group 014"
+icon = ":bookmark_tabs:"
+is_section = true
+
+[[pages]]
+path = "ENG220-Group-014/app14.py"
+name = "Group 014"
+icon = ":page_facing_up:"
+
+[[pages]]
+name = "Group 015"
+icon = ":bookmark_tabs:"
+is_section = true
+
+[[pages]]
+path = "ENG220-Group-015/app15.py"
+name = "Group 015"
+icon = ":page_facing_up:"
+
+[[pages]]
+name = "Group 016"
+icon = ":bookmark_tabs:"
+is_section = true
+
+[[pages]]
+path = "ENG220-Group-016/app16.py"
+name = "Group 016"
+icon = ":page_facing_up:"
+
+[[pages]]
+name = "Group 017"
+icon = ":bookmark_tabs:"
+is_section = true
+
