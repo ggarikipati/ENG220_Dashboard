@@ -25,7 +25,7 @@ pg = st.navigation(nav)
 add_page_title(pg)
 
 # Show dashboard introduction if on the home page
-if pg.name == "🏠 Dashboard Home":
+if pg.title == "🏠 Dashboard Home":
     st.markdown("""
     # ENG220 Combined Project Dashboard
 
