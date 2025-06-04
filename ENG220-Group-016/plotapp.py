@@ -1,29 +1,44 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 
-# Title of the app
-st.title("CSV Data Visualization App")
+# Set up file path using os
+current_dir = os.path.dirname(__file__)
+file_path = os.path.join(current_dir, 'Suicide Deaths by County, New Mexico, 2016-2020.csv')
 
-# Load data directly from file
-data = pd.read_csv('./Suicide Deaths by County, New Mexico, 2016-2020.csv') 
+# App Title
+st.title("Group-016")
+
+# Project Summary
+st.markdown("""
+### Suicide Deaths in New Mexico Counties
+
+This project analyzed suicide death data across New Mexico counties to identify areas at higher risk.  
+Key findings reveal disparities across counties—**Catron County** recorded the highest suicide rate in the contiguous U.S. from 2010–2020.  
+Other notable counties include **San Juan, McKinley, and Bernalillo**.  
+While rural counties often show **higher rates**, larger counties (Bernalillo, Santa Fe, Doña Ana) contribute the **highest absolute counts**.  
+This analysis aims to support targeted **suicide prevention** strategies and more **equitable resource allocation** across New Mexico.
+
+""")
+
+# Load CSV
+try:
+    data = pd.read_csv(file_path)
+except FileNotFoundError:
+    st.error("The file was not found. Please ensure it is in the correct folder.")
+    data = None
 
 if data is not None:
     st.write("### Data Preview")
     st.dataframe(data)
 
-    # Dropdown for selecting columns
     columns = data.columns.tolist()
     x_column = st.selectbox("Select X-axis column", columns)
     y_column = st.selectbox("Select Y-axis column", columns)
 
-    # Dropdown for graph type
-    graph_type = st.selectbox(
-        "Select Graph Type",
-        ["Line", "Scatter", "Bar", "Pie"]
-    )
+    graph_type = st.selectbox("Select Graph Type", ["Line", "Scatter", "Bar", "Pie"])
 
-    # Plot button
     if st.button("Plot Graph"):
         fig, ax = plt.subplots()
 
@@ -40,17 +55,16 @@ if data is not None:
             ax.set_title(f"{y_column} vs {x_column} (Bar Chart)")
 
         elif graph_type == "Pie":
-            # Pie chart only makes sense for single-column data
-            if len(data[x_column].unique()) <= 10:  # Limit to 10 unique categories for readability
+            if len(data[x_column].unique()) <= 10:
                 plt.pie(
                     data[y_column],
                     labels=data[x_column],
                     autopct='%1.1f%%',
-                    startangle=90,
+                    startangle=90
                 )
                 plt.title(f"{y_column} (Pie Chart)")
             else:
-                st.error("Pie chart requires fewer unique categories in the X-axis.")
+                st.error("Too many categories for a pie chart. Try a different graph type.")
 
         if graph_type != "Pie":
             ax.set_xlabel(x_column)
@@ -61,4 +75,4 @@ if data is not None:
 
     st.write("Tip: Ensure the selected columns are numeric for meaningful plots.")
 else:
-    st.info("Please upload a CSV file to get started.")
+    st.info("CSV file not available. Please ensure it's uploaded or exists in the correct directory.")
