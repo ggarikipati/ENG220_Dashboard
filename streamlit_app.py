@@ -2,7 +2,7 @@ import streamlit as st
 from st_pages import add_page_title, get_nav_from_toml
 
 # Set page layout and title
-st.set_page_config(page_title="ENG220 Unified Dashboard", layout="wide")
+
 st.title("ENG220-Dashboard (Fall2024)")
 
 # ✅ Unique key avoids StreamlitDuplicateElementId error
