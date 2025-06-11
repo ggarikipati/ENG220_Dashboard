@@ -3,15 +3,21 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-st.set_page_config(layout="wide")
-st.markdown("""
-### California PM2.5 Dashboard
+# MUST be the first Streamlit command
+st.set_page_config(page_title="Group-005", layout="wide")
 
-Visualize **PM2.5 Air Pollution Data** from 2019–2024 using CSV files.  
-Includes **monthly averages**, **year-wise totals**, and **AQI comparisons**.
+st.title("Group-005")
+
+st.markdown("""
+### California Air Pollution Visualization Dashboard
+
+This app provides an interactive interface to explore **California air quality data** from **2019 to 2024**, 
+integrated with Streamlit for intuitive exploration.  
+Data includes daily readings of various pollutants like **PM2.5**, **CO**, **NO₂**, **Ozone**, and **Lead**, sourced from government monitoring systems.  
+You can compare pollutants by year, visualize monthly averages, and explore proportions via bar and pie charts.
 """)
 
-# File setup
+# Define file paths (CSV files instead of Excel)
 base_path = os.path.dirname(__file__)
 file_names = {
     "2024": os.path.join(base_path, "California2024.csv"),
@@ -22,66 +28,101 @@ file_names = {
     "2019": os.path.join(base_path, "California2019.csv"),
 }
 
-# Sidebar options
-selected_years = st.sidebar.multiselect("Select Years", list(file_names.keys()), default=list(file_names.keys()))
-metric = st.sidebar.radio("View By", ["PM2.5 Concentration", "AQI"])
+# Pollutant descriptions
+measurement_info = {
+    "PM2.5": "Daily Mean PM2.5 Concentration (µg/m³)",
+    "CO": "Carbon Monoxide (ppm)",
+    "NO2": "Nitrogen Dioxide (ppb)",
+    "Ozone": "Ozone (ppm)",
+    "Pb": "Lead (µg/m³)",
+}
 
-# Load function
-def load_data(filepath):
+# Function to load data from CSV
+def load_data(file_path, pollutant_column):
     try:
-        df = pd.read_csv(filepath)
-        df["Date"] = pd.to_datetime(df["Date"], dayfirst=True, errors="coerce")
-        df.dropna(subset=["Date"], inplace=True)
-        df["Month"] = df["Date"].dt.month
-        df["Year"] = df["Date"].dt.year
-        return df
+        df = pd.read_csv(file_path)
+
+        # Convert date and extract features
+        df['Date'] = pd.to_datetime(df['Date'], errors='coerce', dayfirst=True)
+        df.dropna(subset=['Date'], inplace=True)
+        df['Month'] = df['Date'].dt.month
+        df['Year'] = df['Date'].dt.year
+
+        if pollutant_column not in df.columns:
+            st.warning(f"'{pollutant_column}' not found in {os.path.basename(file_path)}")
+            return pd.DataFrame(), None
+
+        return df, pollutant_column
     except Exception as e:
-        st.error(f"Error loading {filepath}: {e}")
-        return pd.DataFrame()
+        st.error(f"Error reading {os.path.basename(file_path)}: {e}")
+        return pd.DataFrame(), None
 
-# Load data
-frames = []
+# UI Controls
+pollutants = list(measurement_info.keys())
+selected_pollutant = st.selectbox("Select Pollutant", pollutants)
+st.markdown(f"**Measurement Info:** {measurement_info[selected_pollutant]}")
+
+measurement_options = ["Measurement"]
+if selected_pollutant != "Pb":
+    measurement_options.append("AQI")
+selected_measurement = st.radio("Select Data Type", measurement_options)
+
+selected_years = st.multiselect("Select Years", list(file_names.keys()), default=list(file_names.keys()))
+
+# Load and combine data
+dataframes = []
+measurement_column_name = "Daily Mean PM2.5 Concentration" if selected_pollutant == "PM2.5" else selected_pollutant
+
 for year in selected_years:
-    df = load_data(file_names[year])
+    df, measurement_col = load_data(file_names[year], measurement_column_name)
     if not df.empty:
-        frames.append(df)
+        dataframes.append(df)
 
-# Visualizations
-if frames:
-    full_df = pd.concat(frames)
+if dataframes:
+    all_data = pd.concat(dataframes, ignore_index=True)
 
-    col_name = "Daily Mean PM2.5 Concentration" if metric == "PM2.5 Concentration" else "Daily AQI Value"
-    if col_name not in full_df.columns:
-        st.error(f"Column '{col_name}' not found in the files.")
+    if selected_measurement == "AQI":
+        measurement_column_name = "Daily AQI Value"
+
+    if measurement_column_name not in all_data.columns:
+        st.error(f"The selected column '{measurement_column_name}' is not available.")
     else:
-        grouped = full_df.groupby(["Year", "Month"])[col_name].mean().reset_index()
+        grouped_data = all_data.groupby(['Year', 'Month'])[measurement_column_name].mean().reset_index()
 
-        st.subheader(f"Monthly Average {col_name}")
+        # Line Chart
+        st.subheader(f"{selected_pollutant} Monthly Averages (Line Plot)")
         fig, ax = plt.subplots(figsize=(10, 6))
-        for year in grouped["Year"].unique():
-            subset = grouped[grouped["Year"] == year]
-            ax.plot(subset["Month"], subset[col_name], label=str(year))
-        ax.set_title(f"Monthly Average {col_name}")
+        for year in grouped_data['Year'].unique():
+            year_data = grouped_data[grouped_data['Year'] == year]
+            ax.plot(year_data['Month'], year_data[measurement_column_name], label=str(year))
+        ax.set_title(f"Monthly Avg of {measurement_column_name} for {selected_pollutant}")
         ax.set_xlabel("Month")
-        ax.set_ylabel(col_name)
+        ax.set_ylabel(measurement_column_name)
         ax.legend()
         ax.set_xticks(range(1, 13))
-        ax.set_xticklabels(["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
+        ax.set_xticklabels(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
         st.pyplot(fig)
 
-        st.subheader("Monthly Average Table")
-        st.dataframe(grouped)
+        if selected_measurement == "Measurement":
+            # Bar Chart
+            bar_data = all_data.groupby('Year')[measurement_column_name].sum().reset_index()
+            st.subheader(f"Total {selected_pollutant} Values by Year (Bar Chart)")
+            bar_fig, ax = plt.subplots()
+            ax.bar(bar_data['Year'], bar_data[measurement_column_name])
+            ax.set_xlabel("Year")
+            ax.set_ylabel(f"Total {measurement_column_name}")
+            ax.set_title(f"Total {selected_pollutant} by Year")
+            st.pyplot(bar_fig)
 
-        # Bar chart: yearly sum
-        st.subheader(f"Total {col_name} by Year")
-        yearly_sum = full_df.groupby("Year")[col_name].sum().reset_index()
-        fig2, ax2 = plt.subplots()
-        ax2.bar(yearly_sum["Year"], yearly_sum[col_name])
-        ax2.set_xlabel("Year")
-        ax2.set_ylabel(f"Total {col_name}")
-        ax2.set_title(f"Total {col_name} by Year")
-        st.pyplot(fig2)
+            # Pie Chart
+            st.subheader(f"Proportion of {selected_pollutant} Values by Year (Pie Chart)")
+            pie_fig, ax = plt.subplots()
+            ax.pie(bar_data[measurement_column_name], labels=bar_data['Year'], autopct='%1.1f%%', startangle=90)
+            ax.set_title(f"Proportion of Total {measurement_column_name} by Year")
+            st.pyplot(pie_fig)
 
+        st.subheader("Grouped Monthly Average Data")
+        st.dataframe(grouped_data)
 else:
-    st.warning("No data loaded. Please check file names or date format.")
+    st.error("No data loaded. Please check file names or pollutant selection.")
