@@ -2,7 +2,7 @@
 import streamlit as st
 
 
-st.title("Group-020")
+#st.title("Group-020")
 
 st.markdown("""
 This project integrates contributions from multiple groups to analyze and visualize diverse datasets related to air quality, environmental monitoring, and gun violence trends in New Mexico and surrounding states. Each page represents a unique dataset and individual analysis:
