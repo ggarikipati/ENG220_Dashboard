@@ -8,7 +8,7 @@ current_dir = os.path.dirname(__file__)
 file_path = os.path.join(current_dir, 'CleanedMHData(Sheet1) (1).csv')
 
 # Title
-st.title("Group-014")
+#st.title("Group-014")
 
 # Project description
 st.markdown("""
