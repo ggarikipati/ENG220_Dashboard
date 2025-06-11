@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import os
 
 # Title of the app
-st.title("Group-002")
+#st.title("Group-002")
 
 st.markdown("""
 ### Water Quality Trends in New Mexico (2020–2023)
