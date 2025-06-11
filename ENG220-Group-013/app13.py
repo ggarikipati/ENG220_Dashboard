@@ -1,14 +1,16 @@
 
 import streamlit as st
 
-st.title("📘 Welcome to the CSV Visualization Dashboard Book")
+st.title("Group-013")
+
 st.markdown("""
-This project presents interactive dashboards for two filtered county-level datasets:
+This dashboard presents interactive data visualizations for environmental and public health trends.
 
-- `US_NM_35001.csv` (Bernalillo County, NM)
-- `US_TX_48029.csv` (Bexar County, TX)
+Users can explore key variables from these datasets using a variety of graph types such as line charts, bar charts, scatter plots, and pie charts.  
+This tool enables users to investigate relationships across demographic, environmental, or health-related indicators.
 
-Use the options below to navigate to visualizations.
+Use the navigation options below to explore the dataset-specific dashboards.
 """)
+
 
 st.info("To explore, go to: `ENG220-Group-013/pages/page1.py` or `page2.py` in the unified dashboard.")
