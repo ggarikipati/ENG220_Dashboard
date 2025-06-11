@@ -1,16 +1,20 @@
+
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 
-st.title("Dataset 1 - US_NM_35001.csv")
+st.title("Dataset 1 – US_NM_35001.csv")
 
-# Load dataset
-data = pd.read_csv("./.csv Files/filtered_US_NM.csv")
+# Load dataset using os.path for dashboard compatibility
+current_dir = os.path.dirname(__file__)
+file_path = os.path.join(current_dir, "..", ".csv Files", "filtered_US_NM.csv")
+file_path = os.path.abspath(file_path)  # Convert to absolute path  # Move CSVs into a centralized 'data' folder
 
+data = pd.read_csv(file_path)
 st.write("### Data Preview")
 st.dataframe(data)
 
-# Visualization logic (same as before)
 columns = data.columns.tolist()
 x_column = st.selectbox("Select X-axis column", columns)
 y_column = st.selectbox("Select Y-axis column", columns)
