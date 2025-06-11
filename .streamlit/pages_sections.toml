@@ -1,9 +1,10 @@
-
-
+# Home Page
 [[pages]]
 path = "streamlit_app.py"
-name = "Dashboard Home"
+name = "🏠 Dashboard Home"
 icon = ":house:"
+
+# All Group Projects in Ascending Order
 
 [[pages]]
 path = "ENG220-Group-001/app1.py"
