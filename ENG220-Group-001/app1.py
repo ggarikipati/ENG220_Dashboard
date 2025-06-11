@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import os
 
 # Title of the app
-st.title("Group-001")
+#st.title("Group-001")
 
 st.markdown("""
 ### Water Supply Data Visualization App
