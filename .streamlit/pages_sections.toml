@@ -138,22 +138,3 @@ path = "ENG220-Group-020/pages/page20.3.py"
 name = "Visualization 3"
 icon = ":bar_chart:"
 
-[[pages]]
-path = "ENG220-Group-021/app21.py"
-name = "Group 021"
-icon = ":bookmark:"
-
-[[pages]]
-path = "ENG220-Group-021/pages/page21.1.py"
-name = "Visualization 1"
-icon = ":bar_chart:"
-
-[[pages]]
-path = "ENG220-Group-021/pages/page21.2.py"
-name = "Visualization 2"
-icon = ":bar_chart:"
-
-[[pages]]
-path = "ENG220-Group-021/pages/page21.3.py"
-name = "Visualization 3"
-icon = ":bar_chart:"
