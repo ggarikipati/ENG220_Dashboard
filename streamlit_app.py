@@ -39,7 +39,7 @@ if pg.title == "🏠 Dashboard Home":
     - Regional policy evaluations
     - Interactive visual dashboards
 
-    # Professor: Dr. Ramiro Jordan
+    ### Professor: Dr. Ramiro Jordan
     Teaching Assistants
     - Chadi Harmouche
     - Gnanitha Garikipati
