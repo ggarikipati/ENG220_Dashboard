@@ -4,11 +4,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-# ✅ Must be the first Streamlit command
-st.set_page_config(page_title="Group-005", layout="wide")
+
 
 # Title
-st.title("Group-005")
+#st.title("Group-005")
 
 # Markdown description
 st.markdown("""
