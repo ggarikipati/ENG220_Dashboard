@@ -41,7 +41,7 @@ measurement_info = {
 # Function to load Excel sheet
 def load_data(file_path, sheet_name):
     try:
-        df = pd.read_excel(file_path, sheet_name=sheet_name)
+        df = pd.read_csv(file_path, sheet_name=sheet_name)
         measurement_col = df.columns[1]
         df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
         df.dropna(subset=['Date'], inplace=True)
