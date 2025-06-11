@@ -9,7 +9,7 @@ current_dir = os.path.dirname(__file__)
 file_path = os.path.join(current_dir, 'Suicide Deaths by County, New Mexico, 2016-2020.csv')
 
 # App Title
-st.title("Group-016")
+#st.title("Group-016")
 
 # Project Summary
 st.markdown("""
