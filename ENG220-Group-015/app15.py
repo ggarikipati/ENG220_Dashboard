@@ -8,7 +8,7 @@ current_dir = os.path.dirname(__file__)
 file_path = os.path.join(current_dir, 'HealthData.csv')
 
 # App Title
-st.title("Group-015")
+#st.title("Group-015")
 
 # Project Introduction
 st.markdown("""
