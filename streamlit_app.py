@@ -1,27 +1,25 @@
 import streamlit as st
 from st_pages import add_page_title, get_nav_from_toml
 
-# Set wide layout and page title
+# Set page layout and title
+st.set_page_config(page_title="ENG220 Unified Dashboard", layout="wide")
 st.title("ENG220-Dashboard (Fall2024)")
 
-# Sidebar toggle to show grouped or flat navigation
-use_sections = st.sidebar.toggle("Group by Sections", value=True)
+# ✅ Unique key avoids StreamlitDuplicateElementId error
+use_sections = st.sidebar.toggle("Group by Sections", value=True, key="toggle_sections")
 
-# Load navigation from the TOML file
+# Load navigation based on toggle state
 nav = get_nav_from_toml(
     ".streamlit/pages_sections.toml" if use_sections else ".streamlit/pages.toml"
 )
 
-# Optional logo (commented out if not using one)
-# st.logo("assets/logo.png")
-
-# Create the navigation object
+# Initialize navigation
 pg = st.navigation(nav)
 
-# Add the title and icon from the selected page
+# Add dynamic page title & icon from current selection
 add_page_title(pg)
 
-# Show dashboard introduction if on the home page
+# Show home dashboard content if on home
 if pg.title == "🏠 Dashboard Home":
     st.markdown("""
     # ENG220 Combined Project Dashboard
@@ -32,7 +30,7 @@ if pg.title == "🏠 Dashboard Home":
     ## 🔍 How to Use:
     - Use the **sidebar** to browse through the 21 ENG220 group projects.
     - Each group is listed in order (Group 001 to Group 021).
-    - Some groups (like 013, 019, 020) contain multiple subpages.
+    - Some groups (like 013, 019, 020, 021) contain multiple visualizations.
 
     ## 📘 What You’ll Find:
     - Environmental & water data analysis
@@ -40,8 +38,8 @@ if pg.title == "🏠 Dashboard Home":
     - Interactive visual dashboards
 
     ---
-    Select a project from the sidebar to get started!
+    👉 Select a project from the sidebar to get started!
     """)
 else:
-    # Run the selected project/subpage
+    # Run the selected project or subpage
     pg.run()
