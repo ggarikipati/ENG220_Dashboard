@@ -2,7 +2,7 @@
 [[pages]]
 path = "streamlit_app.py"
 name = "🏠 Dashboard Home"
-icon = ":house:"
+icon = ""
 
 # All Group Projects in Ascending Order
 
