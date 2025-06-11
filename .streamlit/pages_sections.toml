@@ -145,3 +145,33 @@ icon = ":page_with_curl:"
 path = "ENG220-Group-013/pages/page2.py"
 name = "Visualization 2"
 icon = ":page_with_curl:"
+
+[[pages]]
+name = "Group 014"
+icon = ":bookmark_tabs:"
+is_section = true
+
+[[pages]]
+path = "ENG220-Group-014/app14.py"
+name = "Group 014"
+icon = ":page_facing_up:"
+
+[[pages]]
+name = "Group 015"
+icon = ":bookmark_tabs:"
+is_section = true
+
+[[pages]]
+path = "ENG220-Group-015/app15.py"
+name = "Group 015"
+icon = ":page_facing_up:"
+
+[[pages]]
+name = "Group 016"
+icon = ":bookmark_tabs:"
+is_section = true
+
+[[pages]]
+path = "ENG220-Group-016/app16.py"
+name = "Group 016"
+icon = ":page_facing_up:"
