@@ -6,8 +6,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import os
 
-st.set_page_config(page_title="Group-017 | AQI & Weather", layout="wide")
-st.title("Group-017: Air Quality & Weather Dashboard")
+
+st.title("Group-017")
 
 st.markdown("""
 This project explores the relationship between **Air Quality Index (AQI)** and **Weather Patterns** across the United States, with a focus on New Mexico.  
