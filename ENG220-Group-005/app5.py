@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import os
 
 # Title and description
-st.title("Group-005")
+#st.title("Group-005")
 
 st.markdown("""
 ### California Air Pollution Visualization Dashboard
