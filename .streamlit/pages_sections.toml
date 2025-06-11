@@ -207,12 +207,12 @@ name = "group 019"
 icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-019/pages/page1.py"
+path = "ENG220-Group-019/pages/page19.1.py"
 name = "Page 1"
 icon = ":page_with_curl:"
 
 [[pages]]
-path = "ENG220-Group-019/pages/page2.py"
+path = "ENG220-Group-019/pages/page19.2.py"
 name = "Page 2"
 icon = ":page_with_curl:"
 
@@ -227,17 +227,17 @@ name = "Group 020"
 icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-020/pages/page1.py"
+path = "ENG220-Group-020/pages/page20.1.py"
 name = "Page 1"
 icon = ":page_with_curl:"
 
 [[pages]]
-path = "ENG220-Group-020/pages/page2.py"
+path = "ENG220-Group-020/pages/page20.2.py"
 name = "Page 2"
 icon = ":page_with_curl:"
 
 [[pages]]
-path = "ENG220-Group-020/pages/page3.py"
+path = "ENG220-Group-020/pages/page20.3.py"
 name = "Page 3"
 icon = ":page_with_curl:"
 
@@ -252,16 +252,16 @@ name = "Group 021"
 icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-021/pages/page1.py"
+path = "ENG220-Group-021/pages/page21.1.py"
 name = "Page 1"
 icon = ":page_with_curl:"
 
 [[pages]]
-path = "ENG220-Group-021/pages/page2.py"
+path = "ENG220-Group-021/pages/page21.2.py"
 name = "Page 2"
 icon = ":page_with_curl:"
 
 [[pages]]
-path = "ENG220-Group-021/pages/page3.py"
+path = "ENG220-Group-021/pages/page21.3.py"
 name = "Page 3"
 icon = ":page_with_curl:"
