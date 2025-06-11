@@ -137,11 +137,11 @@ name = "Main Page"
 icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-013/pages/page1.py"
+path = "ENG220-Group-013/pages/Visualization1.py"
 name = "Page 1"
 icon = ":page_with_curl:"
 
 [[pages]]
-path = "ENG220-Group-013/pages/page2.py"
+path = "ENG220-Group-013/pages/Visualization2.py"
 name = "Page 2"
 icon = ":page_with_curl:"
