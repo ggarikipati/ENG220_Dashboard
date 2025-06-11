@@ -20,12 +20,12 @@ You can compare pollutants by year, visualize monthly averages, and explore prop
 # Base directory and file mappings
 base_path = os.path.dirname(__file__)
 file_names = {
-    "2024": os.path.join(base_path, "..", "California2024.xlsx"),
-    "2023": os.path.join(base_path, "California2023.xlsx"),
-    "2022": os.path.join(base_path, "California2022.xlsx"),
-    "2021": os.path.join(base_path, "California2021.xlsx"),
-    "2020": os.path.join(base_path, "California2020.xlsx"),
-    "2019": os.path.join(base_path, "California2019.xlsx"),
+    "2024" = os.path.join(base_path, "California2024.xlsx"),
+    "2023" = os.path.join(base_path, "California2023.xlsx"),
+    "2022" = os.path.join(base_path, "California2022.xlsx"),
+    "2021" = os.path.join(base_path, "California2021.xlsx"),
+    "2020" = os.path.join(base_path, "California2020.xlsx"),
+    "2019" = os.path.join(base_path, "California2019.xlsx"),
 }
 
 # Measurement unit descriptions
@@ -40,7 +40,7 @@ measurement_info = {
 # Function to load Excel sheet
 def load_data(file_path, sheet_name):
     try:
-        df = pd.read_excel(file_path, sheet_name=sheet_name, engine="openpyxl")
+        df = pd.read_excel(file_path)
         measurement_col = df.columns[1]
         df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
         df.dropna(subset=['Date'], inplace=True)
