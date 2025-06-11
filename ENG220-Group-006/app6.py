@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Title
-st.title("Group-006")
+#st.title("Group-006")
 
 st.markdown("""
 ### Southern United States Air Quality Visualization
