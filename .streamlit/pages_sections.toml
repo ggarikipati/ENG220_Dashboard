@@ -133,15 +133,15 @@ is_section = true
 
 [[pages]]
 path = "ENG220-Group-013/app13.py"
-name = "Main Page"
+name = "Group 013"
 icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-013/pages/page1.py"
-name = "Page 1"
+name = "Visualization 1"
 icon = ":page_with_curl:"
 
 [[pages]]
 path = "ENG220-Group-013/pages/page2.py"
-name = "Page 2"
+name = "Visualization 2"
 icon = ":page_with_curl:"
