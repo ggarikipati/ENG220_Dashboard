@@ -1,14 +1,15 @@
+
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-st.title("Dataset 2 - Filtered_US_NM_County.csv")
+st.title("Clean Energy Source Analysis – EPI.csv")
 
-# Resolve absolute file path
+# Load dataset using os.path for compatibility
 current_dir = os.path.dirname(__file__)
-file_path = os.path.join(current_dir, "..", ".csv Files", "filtered_US_NM_County.csv")
-file_path = os.path.abspath(file_path)  # Convert to absolute path
+file_path = os.path.join(current_dir, "..", "EPI.csv")
+file_path = os.path.abspath(file_path)
 
 # Load dataset
 try:
@@ -16,7 +17,7 @@ try:
     st.write("### Data Preview")
     st.dataframe(data)
 
-    # Visualization logic
+    # Visualization interface
     columns = data.columns.tolist()
     x_column = st.selectbox("Select X-axis column", columns)
     y_column = st.selectbox("Select Y-axis column", columns)
@@ -40,7 +41,12 @@ try:
 
         elif graph_type == "Pie":
             if len(data[x_column].unique()) <= 10:
-                plt.pie(data[y_column], labels=data[x_column], autopct='%1.1f%%', startangle=90)
+                plt.pie(
+                    data[y_column],
+                    labels=data[x_column],
+                    autopct='%1.1f%%',
+                    startangle=90
+                )
                 plt.title(f"{y_column} (Pie Chart)")
             else:
                 st.error("Pie chart requires fewer unique categories in the X-axis.")
@@ -55,4 +61,4 @@ try:
     st.write("Tip: Ensure the selected columns are numeric for meaningful plots.")
 
 except FileNotFoundError:
-    st.error(f"File not found at: {file_path}")
+    st.error(f"File not found at path: {file_path}")
