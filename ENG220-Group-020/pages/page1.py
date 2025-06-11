@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-st.title("Dataset 1 – Youth Grants Overview")
+st.title("Dataset 1 – Gun Violence")
 
 # Resolve file path using os for dashboard compatibility
 current_dir = os.path.dirname(__file__)
