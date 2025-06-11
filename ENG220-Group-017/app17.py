@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import os
 
 
-st.title("Group-017")
+#st.title("Group-017")
 
 st.markdown("""
 This project explores the relationship between **Air Quality Index (AQI)** and **Weather Patterns** across the United States, with a focus on New Mexico.  
