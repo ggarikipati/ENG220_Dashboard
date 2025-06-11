@@ -1,27 +1,31 @@
+
 import streamlit as st
-import uuid
 from st_pages import add_page_title, get_nav_from_toml
 
-# ✅ This MUST be the first Streamlit command
-st.set_page_config(page_title="ENG220 Unified Dashboard", layout="wide")
+# Set wide layout and page title
+st.set_page_config(
+    layout="wide",
+    page_title="ENG220 Dashboard (Fall-2024)"
+)
 
-# Set dashboard title
-st.title("ENG220-Dashboard (Fall2024)")
+# Sidebar toggle to show grouped or flat navigation
+use_sections = st.sidebar.toggle("Group by Sections", value=True)
 
-# ✅ Avoid duplicate toggle key using UUID
-unique_toggle_key = f"toggle_sections_{uuid.uuid4()}"
-use_sections = st.sidebar.toggle("Group by Sections", value=True, key=unique_toggle_key)
-
-# Load navigation config
+# Load navigation from the TOML file
 nav = get_nav_from_toml(
     ".streamlit/pages_sections.toml" if use_sections else ".streamlit/pages.toml"
 )
 
-# Render navigation
+# Optional logo (commented out if not using one)
+# st.logo("assets/logo.png")
+
+# Create the navigation object
 pg = st.navigation(nav)
+
+# Add the title and icon from the selected page
 add_page_title(pg)
 
-# Show home content
+# Show dashboard introduction if on the home page
 if pg.title == "🏠 Dashboard Home":
     st.markdown("""
     # ENG220 Combined Project Dashboard
@@ -31,7 +35,8 @@ if pg.title == "🏠 Dashboard Home":
 
     ## 🔍 How to Use:
     - Use the **sidebar** to browse through the 21 ENG220 group projects.
-    - Some groups (like 013, 019, 020, 021) include multiple interactive visualizations.
+    - Each group is listed in order (Group 001 to Group 021).
+    - Some groups (like 013, 019, 020) contain multiple subpages.
 
     ## 📘 What You’ll Find:
     - Environmental & water data analysis
@@ -39,7 +44,8 @@ if pg.title == "🏠 Dashboard Home":
     - Interactive visual dashboards
 
     ---
-    👉 Select a project from the sidebar to get started!
+    Select a project from the sidebar to get started!
     """)
 else:
+    # Run the selected project/subpage
     pg.run()
