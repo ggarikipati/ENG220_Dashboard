@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import os
 
 # Title of the app
-st.title("Group-004")
+#st.title("Group-004")
 
 st.markdown("""
 ### Water Data in New Mexico Districts
