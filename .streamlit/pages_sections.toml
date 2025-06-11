@@ -4,109 +4,109 @@ name = "Dashboard Home"
 icon = ":house:"
 
 [[pages]]
-path = "ENG220-Group-001/app001.py"
+path = "ENG220-Group-001/app1.py"
 name = "Group 001"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-002/app002.py"
+path = "ENG220-Group-002/app2.py"
 name = "Group 002"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-003/app003.py"
+path = "ENG220-Group-003/app3.py"
 name = "Group 003"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-004/app004.py"
+path = "ENG220-Group-004/app4.py"
 name = "Group 004"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-005/app005.py"
+path = "ENG220-Group-005/app5.py"
 name = "Group 005"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-006/app006.py"
+path = "ENG220-Group-006/app6.py"
 name = "Group 006"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-007/app007.py"
+path = "ENG220-Group-007/app7.py"
 name = "Group 007"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-008/app008.py"
+path = "ENG220-Group-008/app8.py"
 name = "Group 008"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-009/app009.py"
+path = "ENG220-Group-009/app9.py"
 name = "Group 009"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-010/app010.py"
+path = "ENG220-Group-010/app10.py"
 name = "Group 010"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-011/app011.py"
+path = "ENG220-Group-011/app11.py"
 name = "Group 011"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-012/app012.py"
+path = "ENG220-Group-012/app12.py"
 name = "Group 012"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-013/app013.py"
+path = "ENG220-Group-013/app13.py"
 name = "Group 013"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-013/pages/page13.1.py"
+path = "ENG220-Group-013/pages/page1.py"
 name = "Visualization 1"
 icon = ":bar_chart:"
 
 [[pages]]
-path = "ENG220-Group-013/pages/page13.2.py"
+path = "ENG220-Group-013/pages/page2.py"
 name = "Visualization 2"
 icon = ":bar_chart:"
 
 [[pages]]
-path = "ENG220-Group-014/app014.py"
+path = "ENG220-Group-014/app14.py"
 name = "Group 014"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-015/app015.py"
+path = "ENG220-Group-015/app15.py"
 name = "Group 015"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-016/app016.py"
+path = "ENG220-Group-016/app16.py"
 name = "Group 016"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-017/app017.py"
+path = "ENG220-Group-017/app17.py"
 name = "Group 017"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-018/app018.py"
+path = "ENG220-Group-018/app18.py"
 name = "Group 018"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-019/app019.py"
+path = "ENG220-Group-019/app19.py"
 name = "Group 019"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-019/pages/page19.1.py"
@@ -119,9 +119,9 @@ name = "Visualization 2"
 icon = ":bar_chart:"
 
 [[pages]]
-path = "ENG220-Group-020/app020.py"
+path = "ENG220-Group-020/app20.py"
 name = "Group 020"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-020/pages/page20.1.py"
@@ -139,9 +139,9 @@ name = "Visualization 3"
 icon = ":bar_chart:"
 
 [[pages]]
-path = "ENG220-Group-021/app021.py"
+path = "ENG220-Group-021/app21.py"
 name = "Group 021"
-icon = ":file_folder:"
+icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-021/pages/page21.1.py"
