@@ -20,7 +20,7 @@ You can compare pollutants by year, visualize monthly averages, and explore prop
 # Base directory and file mappings
 base_path = os.path.dirname(__file__)
 file_names = {
-    "2024": os.path.join(base_path, "California2024.xlsx"),
+    "2024": os.path.join(base_path, "..", "California2024.xlsx"),
     "2023": os.path.join(base_path, "California2023.xlsx"),
     "2022": os.path.join(base_path, "California2022.xlsx"),
     "2021": os.path.join(base_path, "California2021.xlsx"),
