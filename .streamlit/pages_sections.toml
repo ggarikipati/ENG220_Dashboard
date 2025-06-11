@@ -1,225 +1,124 @@
-# Home Page
+
+
 [[pages]]
 path = "streamlit_app.py"
-name = "🏠 Dashboard Home"
+name = "Dashboard Home"
 icon = ":house:"
-
-# All Group Projects in Ascending Order
-
-[[pages]]
-name = "Group 001"
-icon = ":bookmark_tabs:"
-is_section = true
 
 [[pages]]
 path = "ENG220-Group-001/app1.py"
 name = "Group 001"
-icon = ":page_facing_up:"
-
-[[pages]]
-name = "Group 002"
-icon = ":bookmark_tabs:"
-is_section = true
+icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-002/app2.py"
 name = "Group 002"
-icon = ":page_facing_up:"
-
-[[pages]]
-name = "Group 003"
-icon = ":bookmark_tabs:"
-is_section = true
+icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-003/app3.py"
 name = "Group 003"
-icon = ":page_facing_up:"
-
-[[pages]]
-name = "Group 004"
-icon = ":bookmark_tabs:"
-is_section = true
+icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-004/app4.py"
 name = "Group 004"
-icon = ":page_facing_up:"
-
-[[pages]]
-name = "Group 005"
-icon = ":bookmark_tabs:"
-is_section = true
+icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-005/app5.py"
 name = "Group 005"
-icon = ":page_facing_up:"
-
-[[pages]]
-name = "Group 006"
-icon = ":bookmark_tabs:"
-is_section = true
+icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-006/app6.py"
 name = "Group 006"
-icon = ":page_facing_up:"
-
-[[pages]]
-name = "Group 007"
-icon = ":bookmark_tabs:"
-is_section = true
+icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-007/app7.py"
 name = "Group 007"
-icon = ":page_facing_up:"
-
-[[pages]]
-name = "Group 008"
-icon = ":bookmark_tabs:"
-is_section = true
+icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-008/app8.py"
 name = "Group 008"
-icon = ":page_facing_up:"
-
-[[pages]]
-name = "Group 009"
-icon = ":bookmark_tabs:"
-is_section = true
+icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-009/app9.py"
 name = "Group 009"
-icon = ":page_facing_up:"
-
-[[pages]]
-name = "Group 010"
-icon = ":bookmark_tabs:"
-is_section = true
+icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-010/app10.py"
 name = "Group 010"
-icon = ":page_facing_up:"
-
-[[pages]]
-name = "Group 011"
-icon = ":bookmark_tabs:"
-is_section = true
+icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-011/app11.py"
 name = "Group 011"
-icon = ":page_facing_up:"
-
-[[pages]]
-name = "Group 012"
-icon = ":bookmark_tabs:"
-is_section = true
+icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-012/app12.py"
 name = "Group 012"
-icon = ":page_facing_up:"
-
-[[pages]]
-name = "Group 013"
-icon = ":bookmark_tabs:"
-is_section = true
+icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-013/app13.py"
-name = "Main Page"
+name = "Group 013"
 icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-013/pages/page1.py"
-name = "Page 1"
-icon = ":page_with_curl:"
+name = "Visualization 1"
+icon = ":bar_chart:"
 
 [[pages]]
 path = "ENG220-Group-013/pages/page2.py"
-name = "Page 2"
-icon = ":page_with_curl:"
-
-[[pages]]
-name = "Group 014"
-icon = ":bookmark_tabs:"
-is_section = true
+name = "Visualization 2"
+icon = ":bar_chart:"
 
 [[pages]]
 path = "ENG220-Group-014/app14.py"
 name = "Group 014"
-icon = ":page_facing_up:"
-
-[[pages]]
-name = "Group 015"
-icon = ":bookmark_tabs:"
-is_section = true
+icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-015/app15.py"
 name = "Group 015"
-icon = ":page_facing_up:"
-
-[[pages]]
-name = "Group 016"
-icon = ":bookmark_tabs:"
-is_section = true
+icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-016/app16.py"
 name = "Group 016"
-icon = ":page_facing_up:"
-
-[[pages]]
-name = "Group 017"
-icon = ":bookmark_tabs:"
-is_section = true
+icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-017/app17.py"
 name = "Group 017"
-icon = ":page_facing_up:"
-
-[[pages]]
-name = "Group 018"
-icon = ":bookmark_tabs:"
-is_section = true
+icon = ":bookmark:"
 
 [[pages]]
 path = "ENG220-Group-018/app18.py"
 name = "Group 018"
-icon = ":page_facing_up:"
-
-[[pages]]
-name = "Group 019"
-icon = ":bookmark_tabs:"
-is_section = true
-
-[[pages]]
-path = "ENG220-Group-019/app19.py"
-name = "group 019"
 icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-019/pages/page1.py"
-name = "Page 1"
-icon = ":page_with_curl:"
+path = "ENG220-Group-019/app19.py"
+name = "Group 019"
+icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-019/pages/page2.py"
-name = "Page 2"
-icon = ":page_with_curl:"
+path = "ENG220-Group-019/pages/page19.1.py"
+name = "Visualization 1"
+icon = ":bar_chart:"
 
 [[pages]]
-name = "Group 020"
-icon = ":bookmark_tabs:"
-is_section = true
+path = "ENG220-Group-019/pages/page19.2.py"
+name = "Visualization 2"
+icon = ":bar_chart:"
 
 [[pages]]
 path = "ENG220-Group-020/app20.py"
@@ -227,24 +126,19 @@ name = "Group 020"
 icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-020/pages/page1.py"
-name = "Page 1"
-icon = ":page_with_curl:"
+path = "ENG220-Group-020/pages/page20.1.py"
+name = "Visualization 1"
+icon = ":bar_chart:"
 
 [[pages]]
-path = "ENG220-Group-020/pages/page2.py"
-name = "Page 2"
-icon = ":page_with_curl:"
+path = "ENG220-Group-020/pages/page20.2.py"
+name = "Visualization 2"
+icon = ":bar_chart:"
 
 [[pages]]
-path = "ENG220-Group-020/pages/page3.py"
-name = "Page 3"
-icon = ":page_with_curl:"
-
-[[pages]]
-name = "Group 021"
-icon = ":bookmark_tabs:"
-is_section = true
+path = "ENG220-Group-020/pages/page20.3.py"
+name = "Visualization 3"
+icon = ":bar_chart:"
 
 [[pages]]
 path = "ENG220-Group-021/app21.py"
@@ -252,16 +146,16 @@ name = "Group 021"
 icon = ":bookmark:"
 
 [[pages]]
-path = "ENG220-Group-021/pages/page1.py"
-name = "Page 1"
-icon = ":page_with_curl:"
+path = "ENG220-Group-021/pages/page21.1.py"
+name = "Visualization 1"
+icon = ":bar_chart:"
 
 [[pages]]
-path = "ENG220-Group-021/pages/page2.py"
-name = "Page 2"
-icon = ":page_with_curl:"
+path = "ENG220-Group-021/pages/page21.2.py"
+name = "Visualization 2"
+icon = ":bar_chart:"
 
 [[pages]]
-path = "ENG220-Group-021/pages/page3.py"
-name = "Page 3"
-icon = ":page_with_curl:"
+path = "ENG220-Group-021/pages/page21.3.py"
+name = "Visualization 3"
+icon = ":bar_chart:"
