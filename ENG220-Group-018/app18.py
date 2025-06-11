@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import os
 
 
-st.title("Group-018")
+#st.title("Group-018")
 
 st.markdown("""
 This dashboard explores air quality trends in U.S. cities and counties from 2000 to 2023.  
