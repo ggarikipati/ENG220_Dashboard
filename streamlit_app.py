@@ -1,25 +1,25 @@
 import streamlit as st
+import uuid
 from st_pages import add_page_title, get_nav_from_toml
 
-# Set page layout and title
-
+# Set layout and dashboard title
+st.set_page_config(page_title="ENG220 Unified Dashboard", layout="wide")
 st.title("ENG220-Dashboard (Fall2024)")
 
-# ✅ Unique key avoids StreamlitDuplicateElementId error
-use_sections = st.sidebar.toggle("Group by Sections", value=True, key="toggle_sections")
+# Avoid StreamlitDuplicateElementKey by using UUID
+unique_toggle_key = f"toggle_sections_{uuid.uuid4()}"
+use_sections = st.sidebar.toggle("Group by Sections", value=True, key=unique_toggle_key)
 
-# Load navigation based on toggle state
+# Load navigation from correct TOML
 nav = get_nav_from_toml(
     ".streamlit/pages_sections.toml" if use_sections else ".streamlit/pages.toml"
 )
 
-# Initialize navigation
+# Navigation system
 pg = st.navigation(nav)
-
-# Add dynamic page title & icon from current selection
 add_page_title(pg)
 
-# Show home dashboard content if on home
+# Home page content
 if pg.title == "🏠 Dashboard Home":
     st.markdown("""
     # ENG220 Combined Project Dashboard
@@ -27,19 +27,18 @@ if pg.title == "🏠 Dashboard Home":
     Welcome to the **ENG220 Project Showcase** 🎓  
     This dashboard integrates all 21 ENG220 group projects for centralized viewing.
 
-    ## 🔍 How to Use:
+    ## How to Use:
     - Use the **sidebar** to browse through the 21 ENG220 group projects.
-    - Each group is listed in order (Group 001 to Group 021).
-    - Some groups (like 013, 019, 020, 021) contain multiple visualizations.
+    - Some groups (like 013, 019, 020, 021) include multiple interactive visualizations.
 
-    ## 📘 What You’ll Find:
+    ## What You’ll Find:
     - Environmental & water data analysis
     - Regional policy evaluations
     - Interactive visual dashboards
 
     ---
-    👉 Select a project from the sidebar to get started!
+    Select a project from the sidebar to get started!
     """)
 else:
-    # Run the selected project or subpage
+    # Run selected page
     pg.run()
