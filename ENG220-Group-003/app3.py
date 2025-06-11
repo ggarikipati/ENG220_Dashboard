@@ -6,7 +6,7 @@ import pandas as pd
 import os
 
 # Title
-st.title("Group-003")
+#st.title("Group-003")
 
 st.markdown("""
 ### McClure Water Reservoir Level with Moving Average
