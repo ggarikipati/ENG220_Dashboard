@@ -3,10 +3,6 @@ import streamlit as st
 from st_pages import add_page_title, get_nav_from_toml
 
 # Set wide layout and page title
-st.set_page_config(
-    layout="wide",
-    page_title="ENG220 Dashboard (Fall-2024)"
-)
 
 # Sidebar toggle to show grouped or flat navigation
 use_sections = st.sidebar.toggle("Group by Sections", value=True)
