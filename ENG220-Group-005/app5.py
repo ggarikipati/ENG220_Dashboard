@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 import os
 
 # Title and description
-st.set_page_config(page_title="Group-005", layout="wide")
-st.title("Group-005")
+
+#st.title("Group-005")
 
 st.markdown("""
 ### California Air Pollution Visualization Dashboard
