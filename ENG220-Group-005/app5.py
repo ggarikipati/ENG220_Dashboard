@@ -1,11 +1,10 @@
-# Group 005 - California Air Pollution Dashboard
+# Group 005 - California Air Pollution Dashboard (CSV version)
 
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-# Title and description
 st.markdown("""
 ### California Air Pollution Visualization Dashboard
 
@@ -15,18 +14,18 @@ Data includes daily readings of various pollutants like **CO, NO₂, Ozone, PM2.
 You can compare pollutants by year, visualize monthly averages, and explore proportions via bar and pie charts.
 """)
 
-# Load Excel files using consistent path pattern
+# Load CSV files using consistent path pattern
 current_dir = os.path.dirname(__file__)
 file_paths = {
-    "2024": os.path.join(current_dir, "California2024.xlsx"),
-    "2023": os.path.join(current_dir, "California2023.xlsx"),
-    "2022": os.path.join(current_dir, "California2022.xlsx"),
-    "2021": os.path.join(current_dir, "California2021.xlsx"),
-    "2020": os.path.join(current_dir, "California2020.xlsx"),
-    "2019": os.path.join(current_dir, "California2019.xlsx"),
+    "2024": os.path.join(current_dir, "California2024.csv"),
+    "2023": os.path.join(current_dir, "California2023.csv"),
+    "2022": os.path.join(current_dir, "California2022.csv"),
+    "2021": os.path.join(current_dir, "California2021.csv"),
+    "2020": os.path.join(current_dir, "California2020.csv"),
+    "2019": os.path.join(current_dir, "California2019.csv"),
 }
 
-# Measurement descriptions
+# Pollutant measurement descriptions
 measurement_info = {
     "CO": "Measured in parts per million (ppm)",
     "Pb": "Measured in micrograms per cubic meter (µg/m³)",
@@ -35,23 +34,23 @@ measurement_info = {
     "PM2.5": "Measured in micrograms per cubic meter (µg/m³)",
 }
 
-# Year-specific fallback measurement columns
+# Year-specific fallback columns for PM2.5 (example)
 fallback_columns = {
     "2024": "Daily Max 1-hour NO2 Concentration",
     "2021": "Daily Max 1-hour NO2 Concentration",
     "2020": "Daily Max 1-hour NO2 Concentration"
 }
 
-# Function to load and prepare Excel data
+# Function to load and clean CSV data
 def load_data(file_path, year):
     try:
-        df = pd.read_excel(file_path)
+        df = pd.read_csv(file_path)
 
         if "Date" not in df.columns:
             st.error(f"No 'Date' column found in {file_path}")
             return pd.DataFrame(), None
 
-        # Identify the appropriate measurement column
+        # Choose fallback or default measurement column
         if year in fallback_columns:
             measurement_col = fallback_columns[year]
         else:
@@ -61,9 +60,13 @@ def load_data(file_path, year):
             st.warning(f"'{measurement_col}' not found in {os.path.basename(file_path)}")
             return pd.DataFrame(), None
 
-        df = df[["Date", measurement_col, "Daily AQI Value"]] if "Daily AQI Value" in df.columns else df[["Date", measurement_col]]
+        columns = ["Date", measurement_col]
+        if "Daily AQI Value" in df.columns:
+            columns.append("Daily AQI Value")
+
+        df = df[columns]
         df["Date"] = pd.to_datetime(df["Date"], errors='coerce')
-        df = df.dropna(subset=["Date"])
+        df.dropna(subset=["Date"], inplace=True)
         df["Month"] = df["Date"].dt.month
         df["Year"] = df["Date"].dt.year
         return df, measurement_col
@@ -72,7 +75,7 @@ def load_data(file_path, year):
         st.warning(f"Error loading {os.path.basename(file_path)}: {e}")
         return pd.DataFrame(), None
 
-# Sidebar or main UI selections
+# UI selection widgets
 pollutants = list(measurement_info.keys())
 selected_pollutant = st.selectbox("Select Pollutant Sheet", pollutants)
 st.markdown(f"**Measurement Info:** {measurement_info[selected_pollutant]}")
@@ -80,7 +83,7 @@ st.markdown(f"**Measurement Info:** {measurement_info[selected_pollutant]}")
 measurement_type = st.radio("Select Data Type", ["Measurement", "AQI"])
 selected_years = st.multiselect("Select Years", list(file_paths.keys()), default=list(file_paths.keys()))
 
-# Load and combine selected years' data
+# Load and combine data
 all_dataframes = []
 measurement_colname = None
 
@@ -91,7 +94,7 @@ for year in selected_years:
         if measurement_colname is None:
             measurement_colname = col
 
-# Proceed if data is available
+# Main visualizations
 if all_dataframes:
     full_data = pd.concat(all_dataframes, ignore_index=True)
 
@@ -118,7 +121,7 @@ if all_dataframes:
                             'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
         st.pyplot(fig)
 
-        # Bar + Pie charts only for measurement
+        # Bar + Pie charts (only for Measurement)
         if measurement_type == "Measurement":
             yearly_totals = full_data.groupby("Year")[measurement_colname].sum().reset_index()
 
@@ -138,6 +141,5 @@ if all_dataframes:
 
         st.subheader("Grouped Monthly Average Data")
         st.dataframe(grouped_data)
-
 else:
     st.error("No data loaded. Please check file format, column names, or selections.")
