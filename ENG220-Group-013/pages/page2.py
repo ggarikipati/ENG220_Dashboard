@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-st.title("Dataset 2 - US_TX_48029.csv")
+st.title("Dataset 2 - Filtered_US_NM_County.csv")
 
 # Resolve absolute file path
 current_dir = os.path.dirname(__file__)
