@@ -6,9 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-# Title and description
-#st.title("Group-005")
-
+# App title and description
 st.markdown("""
 ### California Air Pollution Visualization Dashboard
 
@@ -18,7 +16,7 @@ Data includes daily readings of various pollutants like **CO, NO₂, Ozone, PM2.
 You can compare pollutants by year, visualize monthly averages, and explore proportions via bar and pie charts.
 """)
 
-# Define file paths relative to this script
+# Define file paths
 base_path = os.path.dirname(__file__)
 file_names = {
     "2024": os.path.join(base_path, "California2024.xlsx"),
@@ -29,7 +27,7 @@ file_names = {
     "2019": os.path.join(base_path, "California2019.xlsx"),
 }
 
-# Pollutant measurement descriptions
+# Pollutant measurement info
 measurement_info = {
     "CO": "Measured in parts per million (ppm)",
     "Pb": "Measured in micrograms per cubic meter (µg/m³)",
@@ -38,10 +36,10 @@ measurement_info = {
     "PM2.5": "Measured in micrograms per cubic meter (µg/m³)",
 }
 
-# Function to load sheet data
+# Load data function with openpyxl engine
 def load_data(file_path, sheet_name):
     try:
-        df = pd.read_excel(file_path, sheet_name=sheet_name)
+        df = pd.read_excel(file_path, sheet_name=sheet_name, engine='openpyxl')
         measurement_col = df.columns[1]
 
         df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
@@ -54,21 +52,19 @@ def load_data(file_path, sheet_name):
         st.error(f"Error loading {sheet_name} from {os.path.basename(file_path)}: {e}")
         return pd.DataFrame(), None
 
-# Sidebar: pollutant selection
+# Sidebar selections
 pollutants = list(measurement_info.keys())
-selected_sheet = st.sidebar.selectbox("Select Pollutant Sheet", pollutants)
-st.sidebar.write(f"**Measurement Info:** {measurement_info[selected_sheet]}")
+selected_sheet = st.selectbox("Select Pollutant", pollutants)
+st.markdown(f"**Measurement Info:** {measurement_info[selected_sheet]}")
 
-# Sidebar: data type (raw measurement or AQI)
 measurement_options = {"Measurement": "Measurement (column B)"}
 if selected_sheet != "Pb":
     measurement_options["AQI"] = "Daily AQI Value"
-selected_measurement = st.sidebar.radio("Select Data Type", list(measurement_options.keys()))
+selected_measurement = st.radio("Select Data Type", list(measurement_options.keys()))
 
-# Sidebar: year selection
-selected_years = st.sidebar.multiselect("Select Years", list(file_names.keys()), default=list(file_names.keys()))
+selected_years = st.multiselect("Select Years", list(file_names.keys()), default=list(file_names.keys()))
 
-# Load and combine selected data
+# Load data for selected years
 dataframes = []
 measurement_column_name = None
 
@@ -79,6 +75,7 @@ for year in selected_years:
         if measurement_column_name is None:
             measurement_column_name = measurement_col
 
+# Process and visualize
 if dataframes:
     all_data = pd.concat(dataframes, ignore_index=True)
 
@@ -90,13 +87,13 @@ if dataframes:
     else:
         grouped_data = all_data.groupby(['Year', 'Month'])[measurement_column_name].mean().reset_index()
 
-        # Line chart: year-wise monthly average
-        st.subheader(f"{selected_sheet} Monthly Averages (Line Plot)")
+        # Line chart
+        st.subheader(f"{selected_sheet} Monthly Averages (Line Chart)")
         fig, ax = plt.subplots(figsize=(10, 6))
         for year in grouped_data['Year'].unique():
             year_data = grouped_data[grouped_data['Year'] == year]
             ax.plot(year_data['Month'], year_data[measurement_column_name], label=str(year))
-        ax.set_title(f"Monthly Average {measurement_column_name} for {selected_sheet}")
+        ax.set_title(f"Monthly Avg {measurement_column_name} for {selected_sheet}")
         ax.set_xlabel("Month")
         ax.set_ylabel(measurement_column_name)
         ax.legend()
@@ -105,11 +102,11 @@ if dataframes:
                             'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
         st.pyplot(fig)
 
-        # Bar and Pie charts (only for Measurement, not AQI)
+        # Bar & Pie charts
         if selected_measurement == "Measurement":
             bar_data = all_data.groupby('Year')[measurement_column_name].sum().reset_index()
 
-            st.subheader(f"Total {selected_sheet} Values by Year (Bar Chart)")
+            st.subheader(f"Total {selected_sheet} by Year (Bar Chart)")
             bar_fig, ax = plt.subplots()
             ax.bar(bar_data['Year'], bar_data[measurement_column_name])
             ax.set_xlabel("Year")
@@ -117,12 +114,13 @@ if dataframes:
             ax.set_title(f"Total {selected_sheet} by Year")
             st.pyplot(bar_fig)
 
-            st.subheader(f"Proportion of {selected_sheet} Values by Year (Pie Chart)")
+            st.subheader(f"Proportion of {selected_sheet} by Year (Pie Chart)")
             pie_fig, ax = plt.subplots()
             ax.pie(bar_data[measurement_column_name], labels=bar_data['Year'], autopct='%1.1f%%', startangle=90)
             ax.set_title(f"Proportion of Total {measurement_column_name} by Year")
             st.pyplot(pie_fig)
 
+        # Table
         st.subheader("Grouped Monthly Average Data")
         st.dataframe(grouped_data)
 else:
