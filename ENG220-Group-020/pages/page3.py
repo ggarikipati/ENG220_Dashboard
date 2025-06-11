@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-st.title("Dataset 3 – Filtered Updated Dataset")
+st.title("Dataset 3 – Gun Violence")
 
 # Use os.path for file compatibility in unified dashboard
 current_dir = os.path.dirname(__file__)
