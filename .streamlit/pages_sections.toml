@@ -125,3 +125,23 @@ is_section = true
 path = "ENG220-Group-012/app12.py"
 name = "Group 012"
 icon = ":page_facing_up:"
+
+[[pages]]
+name = "Group 013"
+icon = ":bookmark_tabs:"
+is_section = true
+
+[[pages]]
+path = "ENG220-Group-013/app13.py"
+name = "Main Page"
+icon = ":bookmark:"
+
+[[pages]]
+path = "ENG220-Group-013/pages/page1.py"
+name = "Page 1"
+icon = ":page_with_curl:"
+
+[[pages]]
+path = "ENG220-Group-013/pages/page2.py"
+name = "Page 2"
+icon = ":page_with_curl:"
