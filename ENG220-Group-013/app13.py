@@ -11,6 +11,3 @@ This tool enables users to investigate relationships across demographic, environ
 
 Use the navigation options below to explore the dataset-specific dashboards.
 """)
-
-
-st.info("To explore, go to: `ENG220-Group-013/pages/page1.py` or `page2.py` in the unified dashboard.")
