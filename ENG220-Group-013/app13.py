@@ -1,20 +1,14 @@
+
 import streamlit as st
 
-st.set_page_config(
-    page_title="CSV Visualization Dashboard Book",
-    page_icon="📊",
-    layout="wide",
-)
-
 st.title("📘 Welcome to the CSV Visualization Dashboard Book")
-st.markdown(
-    """
-    This application contains interactive dashboards for multiple datasets.
+st.markdown("""
+This project presents interactive dashboards for two filtered county-level datasets:
 
-    Use the **sidebar** to navigate between the available pages.
-    
-    Each page presents visualizations for a specific dataset such as:
-    - US_NM_35001.csv
-    - US_TX_48029.csv 
-    """
-)
+- `US_NM_35001.csv` (Bernalillo County, NM)
+- `US_TX_48029.csv` (Bexar County, TX)
+
+Use the options below to navigate to visualizations.
+""")
+
+st.info("To explore, go to: `ENG220-Group-013/pages/page1.py` or `page2.py` in the unified dashboard.")
