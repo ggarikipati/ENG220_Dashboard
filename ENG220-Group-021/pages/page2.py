@@ -1,18 +1,21 @@
+
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 
-# File paths for the datasets
-snow_depth_path = "data/reshaped_snow_depth.csv"
-ground_water_path = "data/fixed_ground_water_cleaned.csv"
+# Set current directory for compatibility with unified dashboard
+current_dir = os.path.dirname(__file__)
+snow_depth_path = os.path.abspath(os.path.join(current_dir, "..", "data", "reshaped_snow_depth.csv"))
+ground_water_path = os.path.abspath(os.path.join(current_dir, "..", "data", "fixed_ground_water_cleaned.csv"))
 
 # Load the datasets
 try:
     snow_depth_data = pd.read_csv(snow_depth_path)
     ground_water_data = pd.read_csv(ground_water_path)
 except FileNotFoundError:
-    st.error("Dataset not found. Please ensure the files are in the correct paths: 'data/reshaped_snow_depth.csv' and 'data/fixed_ground_water_cleaned.csv'")
+    st.error("Dataset not found. Please ensure the files exist in the 'data/' directory.")
     st.stop()
 
 # Ensure required columns exist
@@ -48,7 +51,7 @@ if selected_site:
     filtered_snow_data = filtered_snow_data[filtered_snow_data["Site"] == selected_site]
 
 # Display header
-st.title("🌊 Water Resource Dashboard")
+st.title("\U0001F30A Water Resource Dashboard")
 
 # 1. Yearly Snow Depth Trends
 st.subheader("Yearly Snow Depth Trends")
@@ -56,7 +59,6 @@ if not filtered_snow_data.empty:
     yearly_trends = filtered_snow_data.groupby("Water Year")["Snow Depth (in)"].mean()
     plt.figure(figsize=(10, 6))
     plt.scatter(yearly_trends.index, yearly_trends, color='blue', alpha=0.7, edgecolor='k')
-    # Add trend line
     m, b = np.polyfit(yearly_trends.index, yearly_trends, 1)
     plt.plot(yearly_trends.index, m * yearly_trends.index + b, color='red')
     plt.title(f"Yearly Snow Depth Trends for {selected_site}")
@@ -65,7 +67,7 @@ if not filtered_snow_data.empty:
     plt.grid(True)
     st.pyplot(plt)
     plt.clf()
-    st.markdown("**Interpretation:** This graph shows the average snow depth over the years for the selected site, along with a trend line. A declining trend could indicate reduced snowfall, potentially due to climate change, while an increasing trend suggests more favorable snow conditions.")
+    st.markdown("**Interpretation:** This graph shows the average snow depth over the years for the selected site, along with a trend line.")
 else:
     st.warning("No data available for the selected site and year range.")
 
@@ -77,7 +79,6 @@ if "Water Year" in ground_columns:
     if not avg_water_level.empty:
         plt.figure(figsize=(10, 6))
         plt.scatter(avg_water_level.index, avg_water_level, color='green', alpha=0.7, edgecolor='k')
-        # Add trend line
         m, b = np.polyfit(avg_water_level.index, avg_water_level, 1)
         plt.plot(avg_water_level.index, m * avg_water_level.index + b, color='red')
         plt.title("Static Water Level Trends")
@@ -86,7 +87,7 @@ if "Water Year" in ground_columns:
         plt.grid(True)
         st.pyplot(plt)
         plt.clf()
-        st.markdown("**Interpretation:** This graph shows the average static water level over the years, along with a trend line. A declining trend could suggest depletion of groundwater resources, possibly due to over-extraction or insufficient recharge.")
+        st.markdown("**Interpretation:** This graph shows the average static water level over the years with a trend line.")
     else:
         st.warning("No valid data available for Static Water Level Trends.")
 else:
@@ -105,11 +106,10 @@ if "Water Year" in ground_columns:
     if not combined_data.empty:
         plt.figure(figsize=(10, 6))
         plt.scatter(
-            combined_data["Snow Depth (in)"], 
-            combined_data["Static Water Level (ft)"], 
+            combined_data["Snow Depth (in)"],
+            combined_data["Static Water Level (ft)"],
             alpha=0.7, edgecolor='k'
         )
-        # Add trend line
         m, b = np.polyfit(combined_data["Snow Depth (in)"], combined_data["Static Water Level (ft)"], 1)
         plt.plot(combined_data["Snow Depth (in)"], m * combined_data["Snow Depth (in)"] + b, color='red')
         plt.title("Correlation Between Snow Depth and Static Water Level")
@@ -118,7 +118,7 @@ if "Water Year" in ground_columns:
         plt.grid(True)
         st.pyplot(plt)
         plt.clf()
-        st.markdown("**Interpretation:** This scatter plot shows the correlation between snow depth and static water level, along with a trend line. A positive correlation may indicate that higher snow depth contributes to better groundwater recharge, while a lack of correlation could suggest other factors affecting groundwater levels.")
+        st.markdown("**Interpretation:** This scatter plot shows the correlation between snow depth and static water level.")
     else:
         st.warning("No valid data available for correlation analysis.")
 else:
@@ -137,7 +137,7 @@ plt.ylabel("Site")
 plt.grid(True, axis="x")
 st.pyplot(plt)
 plt.clf()
-st.markdown("**Interpretation:** This bar chart highlights the top sites experiencing the greatest decline in snow depth. These sites may require further investigation to understand the underlying causes, such as changes in climate patterns or land use.")
+st.markdown("**Interpretation:** This chart highlights sites with the greatest snow depth decline over time.")
 
 # 5. Overall Trends Across All Sites and Years
 st.subheader("Overall Trends Across All Sites and Years")
@@ -147,9 +147,8 @@ combined_overall = overall_snow_depth.merge(overall_water_level, on="Water Year"
 
 if not combined_overall.empty:
     plt.figure(figsize=(10, 6))
-    plt.plot(combined_overall["Water Year"], combined_overall["Snow Depth (in)"], marker='o', color='blue', label='Average Snow Depth (in)')
-    plt.plot(combined_overall["Water Year"], combined_overall["Static Water Level (ft)"], marker='o', color='green', label='Average Static Water Level (ft)')
-    # Add trend lines
+    plt.plot(combined_overall["Water Year"], combined_overall["Snow Depth (in)"], marker='o', color='blue', label='Avg Snow Depth')
+    plt.plot(combined_overall["Water Year"], combined_overall["Static Water Level (ft)"], marker='o', color='green', label='Avg Static Water Level')
     m_snow, b_snow = np.polyfit(combined_overall["Water Year"], combined_overall["Snow Depth (in)"], 1)
     plt.plot(combined_overall["Water Year"], m_snow * combined_overall["Water Year"] + b_snow, color='blue', linestyle='--')
     m_water, b_water = np.polyfit(combined_overall["Water Year"], combined_overall["Static Water Level (ft)"], 1)
@@ -161,12 +160,8 @@ if not combined_overall.empty:
     plt.grid(True)
     st.pyplot(plt)
     plt.clf()
-    st.markdown("**Interpretation:** This graph provides an overall view of both snow depth and groundwater levels across all sites and years, along with trend lines. The trend lines help to visualize long-term changes. Consistent declines in both metrics could indicate broader environmental issues, while divergent trends may suggest localized factors affecting either snow or groundwater levels.")
+    st.markdown("**Interpretation:** This graph provides a combined view of trends in snow and water levels across all years.")
 else:
     st.warning("No valid data available for overall trends.")
 
-# Back to Home
-st.markdown(
-    "<a href='../HomePage.py' style='font-size: 1.2em;'>⬅️ Back to Home</a>",
-    unsafe_allow_html=True
-)
+st.markdown("Return to homepage using the navigation menu.")
