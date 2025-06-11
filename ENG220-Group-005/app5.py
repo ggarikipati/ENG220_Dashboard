@@ -1,4 +1,3 @@
-
 # Group 005 - California Air Pollution Dashboard
 
 import streamlit as st
@@ -7,7 +6,6 @@ import matplotlib.pyplot as plt
 import os
 
 # Title and description
-
 #st.title("Group-005")
 
 st.markdown("""
@@ -42,7 +40,7 @@ measurement_info = {
 # Function to load Excel sheet
 def load_data(file_path, sheet_name):
     try:
-        df = pd.read_excel(file_path, sheet_name=sheet_name)
+        df = pd.read_excel(file_path, sheet_name=sheet_name, engine="openpyxl")
         measurement_col = df.columns[1]
         df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
         df.dropna(subset=['Date'], inplace=True)
