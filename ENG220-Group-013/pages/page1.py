@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-st.title("Dataset 1 – US_NM_35001.csv")
+st.title("Dataset 1 – Filtered_US_NM.csv")
 
 # Load dataset using os.path for dashboard compatibility
 current_dir = os.path.dirname(__file__)
