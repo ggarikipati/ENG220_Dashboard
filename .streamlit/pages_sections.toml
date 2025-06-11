@@ -86,3 +86,42 @@ path = "ENG220-Group-008/app8.py"
 name = "Group 008"
 icon = ":page_facing_up:"
 
+[[pages]]
+name = "Group 009"
+icon = ":bookmark_tabs:"
+is_section = true
+
+[[pages]]
+path = "ENG220-Group-009/app9.py"
+name = "Group 009"
+icon = ":page_facing_up:"
+
+[[pages]]
+name = "Group 010"
+icon = ":bookmark_tabs:"
+is_section = true
+
+[[pages]]
+path = "ENG220-Group-010/app10.py"
+name = "Group 010"
+icon = ":page_facing_up:"
+
+[[pages]]
+name = "Group 011"
+icon = ":bookmark_tabs:"
+is_section = true
+
+[[pages]]
+path = "ENG220-Group-011/app11.py"
+name = "Group 011"
+icon = ":page_facing_up:"
+
+[[pages]]
+name = "Group 012"
+icon = ":bookmark_tabs:"
+is_section = true
+
+[[pages]]
+path = "ENG220-Group-012/app12.py"
+name = "Group 012"
+icon = ":page_facing_up:"
