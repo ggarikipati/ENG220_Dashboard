@@ -12,8 +12,11 @@ This dashboard brings together visualizations, data analysis, and reports create
 Key features:
 
 📂 Central homepage for navigation
+
 📈 Integrated visualizations from all 21 groups
+
 📊 Subpages for deeper insights within selected projects
+
 🧭 Sidebar toggle to switch between flat and grouped navigation views
 
 ---
