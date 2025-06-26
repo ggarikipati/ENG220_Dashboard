@@ -48,6 +48,6 @@ if pg.title == "ENG220 Dashboard":
     ---
     Select a project from the sidebar to get started!
     """)
-#else:
+else:
     # Run the selected project/subpage
-    #pg.run()
+    pg.run()
