@@ -22,7 +22,7 @@ pg = st.navigation(nav)
 add_page_title(pg)
 
 # Show dashboard introduction if on the home page
-if pg.title == "🏠 Dashboard Home":
+if pg.title == "":
     st.markdown("""
     # ENG220 Combined Project Dashboard Fall 2024
 
@@ -50,4 +50,4 @@ if pg.title == "🏠 Dashboard Home":
     """)
 else:
     # Run the selected project/subpage
-    pg.run()
+    #pg.run()
