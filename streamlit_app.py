@@ -21,34 +21,5 @@ pg = st.navigation(nav)
 # Add the title and icon from the selected page
 add_page_title(pg)
 
-# Show dashboard introduction if on the home page
-if pg.title == "ENG220 Dashboard":
-    st.markdown("""
-    # ENG220 Combined Project Dashboard Fall 2024
 
-    Welcome to the **ENG220 Project Showcase** 🎓  
-    This dashboard integrates all 21 ENG220 group projects for centralized viewing.
-
-    ## How to Use:
-    - Use the **sidebar** to browse through the 21 ENG220 group projects.
-    - Each group is listed in order (Group 001 to Group 021).
-    - Some groups contain multiple subpages.
-
-    ## What You’ll Find:
-    - Environmental & water data analysis
-    - Regional policy evaluations
-    - Interactive visual dashboards
-
-    ### Professor: Dr. Ramiro Jordan
-    Teaching Assistants
-    - Chadi Harmouche
-    - Gnanitha Garikipati
-    - Rishitha Kondrolla
-
-    ---
-    Select a project from the sidebar to get started!
-    """)
-else:
-    # Run the selected project/subpage
-
-    pg.run()
+pg.run()
