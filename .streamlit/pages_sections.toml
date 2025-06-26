@@ -1,11 +1,7 @@
 # Home Page
-[[sections]]
-name = "Main"
-icon = "📊"
-
 [[pages]]
 path = "streamlit_app.py"
-name = "ENG220 Dashboard"
+name = "Dashboard Home"
 icon = "🏠"
 
 # All Group Projects in Ascending Order
