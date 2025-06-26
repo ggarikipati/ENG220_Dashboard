@@ -5,7 +5,7 @@ from st_pages import add_page_title, get_nav_from_toml
 # Set wide layout and page title
 
 # Sidebar toggle to show grouped or flat navigation
-use_sections = st.sidebar.toggle("Group by Sections", value=True)
+use_sections = st.sidebar.toggle("Group by Sections", value=True, key="use_sections_toggle")
 
 # Load navigation from the TOML file
 nav = get_nav_from_toml(
