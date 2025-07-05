@@ -1,28 +1,22 @@
 import streamlit as st
 from st_pages import add_page_title, get_nav_from_toml
 
-# Detect if on the home page
-HOME_PAGE_TITLE = "ENG220 Dashboard"
+# Sidebar toggle rendered once
+use_sections = st.sidebar.toggle("Group by Sections", value=True, key="use_sections_toggle_main")
 
-# Add navigation object first
-pg = st.navigation(
-    get_nav_from_toml(".streamlit/pages_sections.toml")  # use default for now
+# Load navigation only once based on toggle
+nav = get_nav_from_toml(
+    ".streamlit/pages_sections.toml" if use_sections else ".streamlit/pages.toml"
 )
 
-# Only show the toggle on home page
-if pg.title == HOME_PAGE_TITLE:
-    use_sections = st.sidebar.toggle("Group by Sections", value=True, key="use_sections_toggle_main")
-    nav = get_nav_from_toml(
-        ".streamlit/pages_sections.toml" if use_sections else ".streamlit/pages.toml"
-    )
-    # Rebuild navigation with new nav
-    pg = st.navigation(nav)
+# Create navigation once
+pg = st.navigation(nav)
 
-# Add title/icon for selected page
+# Add page title/icon
 add_page_title(pg)
 
-# Show dashboard introduction if on home page
-if pg.title == HOME_PAGE_TITLE:
+# Home page content (based on name from TOML)
+if pg.title == "Dashboard Home":
     st.markdown("""
     # ENG220 Combined Project Dashboard Fall 2024
 
@@ -49,5 +43,4 @@ if pg.title == HOME_PAGE_TITLE:
     Select a project from the sidebar to get started!
     """)
 else:
-    # Run the selected project/subpage
     pg.run()
