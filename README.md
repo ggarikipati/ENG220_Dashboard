@@ -20,4 +20,4 @@ Key features:
 🧭 Sidebar toggle to switch between flat and grouped navigation views
 
 ---
-### Link to the dashboard: https://appapppy-gifpeehban3ynemhdraubz.streamlit.app/
+### Link to the dashboard: https://appapppy-kyotgn9g9aq4rz2y6nra4e.streamlit.app/
