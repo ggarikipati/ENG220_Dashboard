@@ -1,7 +1,7 @@
 
 import streamlit as st
 
-st.title("Group-013")
+#st.title("Group-013")
 
 st.markdown("""
 This dashboard presents interactive data visualizations for environmental and public health trends.
