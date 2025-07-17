@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import os
 
 # Title
-st.title("Group-011")
+#st.title("Group-011")
 
 st.markdown("""
 ### Gun Violence Trends in Albuquerque and New Mexico
