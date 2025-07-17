@@ -8,7 +8,7 @@ current_dir = os.path.dirname(__file__)
 file_path = os.path.join(current_dir, 'gunarchieve_cleaned_team12.csv')
 
 # Title of the app
-st.title("Group-012")
+#st.title("Group-012")
 
 st.markdown("""
 ### Gun Violence Archive Data Exploration
