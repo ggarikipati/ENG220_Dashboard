@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 import os
 
 # Title of the app
-st.title("Group-009")
+#st.title("Group-009")
 
 st.markdown("""
 ### Firearm Arrests Analysis Dashboard
