@@ -8,7 +8,7 @@ import numpy as np
 import os
 
 # Title
-st.title("Group-007")
+#st.title("Group-007")
 
 st.markdown("""
 ### Air Quality Visualization Dashboard for Maine
