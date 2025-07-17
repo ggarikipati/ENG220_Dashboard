@@ -6,7 +6,7 @@ import pandas as pd
 import os
 
 # Title
-st.title("Group-010")
+#st.title("Group-010")
 
 st.markdown("""
 ### Gun Violence Data Visualization
